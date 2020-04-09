@@ -21,13 +21,15 @@ import matplotlib.pyplot as plt
 get_ipython().run_line_magic('matplotlib', 'inline')
 from skimage.color import rgb2gray
 
-os.chdir('C:/Users/prati/OneDrive/Desktop/Masters/bigdata/code2/Parallel_Image_Processing/images')
-
+#os.chdir('C:/Users/prati/OneDrive/Desktop/Masters/bigdata/code2/Parallel_Image_Processing/images')
+os.chdir('/Users/pratikeshsingh/Desktop/Masters/BigData/Parallel')
 ROOT_DIR = os.path.abspath("../")
 
-PATH_TO_C0_TRAIN = os.path.join('C:/Users/prati/OneDrive/Desktop/Masters/bigdata/code2/Parallel_Image_Processing/images','*.JPG')
+#PATH_TO_C0_TRAIN = os.path.join('C:/Users/prati/OneDrive/Desktop/Masters/bigdata/code2/Parallel_Image_Processing/images','*.JPG')
+PATH_TO_C0_TRAIN = os.path.join('/Users/pratikeshsingh/Desktop/Masters/BigData/Parallel/images','*')
 
-TRAIN_FILES = glob.glob(PATH_TO_C0_TRAIN)    
+TRAIN_FILES = glob.glob(PATH_TO_C0_TRAIN) 
+   
 N_PROCS = 4
 
 def load_image(img_file):
@@ -43,17 +45,16 @@ images_parallel = load_images_parallel(TRAIN_FILES)
 print("time taken",time.time() - start, "seconds")
 print("images loaded",len(TRAIN_FILES))
 
-os.chdir('C:/Users/prati/OneDrive/Desktop/Masters/bigdata/code2/Parallel_Image_Processing/')
-out_path = Path.cwd() / "out"
+out_path = Path.cwd() / "processed"
 
 def process_one_file(filename):
-    outfile = out_path / filename.name
+    outfile = out_path / filename
     try:
         image = plt.imread(filename)
         gray = rgb2gray(image)
         plt.imsave(outfile,gray,format="png")
     except IOError:
-        print(f"Cannot create thumbnail for {filename}")
+        print(f"Cannot convert grayscale for {filename}")
 print("_____________________")
 # names = list(in_path.glob("*")) #* 4
 print("Pre Processing images in parallel")
