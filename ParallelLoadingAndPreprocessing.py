@@ -45,7 +45,7 @@ images_parallel = load_images_parallel(TRAIN_FILES)
 print("time taken",time.time() - start, "seconds")
 print("images loaded",len(TRAIN_FILES))
 
-out_path = Path.cwd() / "processed"
+out_path = Path.cwd() / "out"
 
 def process_one_file(filename):
     outfile = out_path / filename

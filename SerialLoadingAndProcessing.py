@@ -45,7 +45,7 @@ print("time taken",time.time() - start, "seconds")
 print("images loaded",len(TRAIN_FILES))
 
 print("_____________________")
-out_path = Path.cwd() / "processed"
+out_path = Path.cwd() / "out"
 print("Pre Processing images in series")
 
 import time
